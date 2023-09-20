@@ -1,3 +1,5 @@
+
+
 import '../peresentation/screens/auth_screen.dart';
 import '../peresentation/screens/book_detail_screen.dart';
 import '../peresentation/screens/home_screen.dart';
@@ -28,9 +30,10 @@ class MyApp extends StatelessWidget with ChangeNotifier {
         ),
         home: AuthScreen(),
         routes: {
-          ShelfScreen.routename: (ctx) => ShelfScreen(),
+          // ShelfScreen.routename: (ctx) => ShelfScreen(),
           BookDetailScreen.routeName: (ctx) => BookDetailScreen(),
           TabsScreen.routeName: (ctx) => TabsScreen(),
+      
         },
       ),
     );

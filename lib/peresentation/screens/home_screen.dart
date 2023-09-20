@@ -1,4 +1,4 @@
-import 'package:book_tracker/peresentation/widgets/book_shelves.dart';
+import 'package:book_tracker/peresentation/widgets/book_shelves_image.dart';
 import 'package:book_tracker/peresentation/widgets/list_details.dart';
 import 'package:book_tracker/peresentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: Row(
                       children: [
-                        BookShelves(constraints),
+                        // BookShelves(constraints),
                         const SizedBox(
                           width: 20,
                         ),
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: Row(
                       children: [
-                        BookShelves(constraints),
+                        // BookShelves(constraints),
                         const SizedBox(
                           width: 20,
                         ),
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     child: Row(
                       children: [
-                        BookShelves(constraints),
+                        // BookShelves(constraints),
                         const SizedBox(
                           width: 20,
                         ),

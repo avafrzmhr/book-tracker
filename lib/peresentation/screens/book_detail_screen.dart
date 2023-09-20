@@ -1,6 +1,5 @@
 import 'package:book_tracker/peresentation/widgets/rating_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class BookDetailScreen extends StatefulWidget {
   static const routeName = '/book_detail_screen';

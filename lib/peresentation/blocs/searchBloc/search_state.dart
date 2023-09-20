@@ -12,7 +12,7 @@ class SearchInitial extends SearchState {
 }
 
 class SearchSuccess extends SearchState {
-  Books books;
+  List<Books> books;
   SearchSuccess(this.books);
   @override
   List<Object?> get props => [books];

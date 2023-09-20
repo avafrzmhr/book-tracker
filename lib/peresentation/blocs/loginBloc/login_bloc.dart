@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import '/data/datasource/api_handler.dart';
 import '/data/repositories/auth_repo.dart';
 import '../../prefs.dart';
 import 'login_event.dart';

@@ -1,11 +1,16 @@
 import 'package:book_tracker/peresentation/screens/book_detail_screen.dart';
-import 'package:book_tracker/peresentation/widgets/book_shelves.dart';
+import 'package:book_tracker/peresentation/widgets/book_shelves_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ShelfScreen extends StatelessWidget {
   static const routename = '/shelf_screen';
+  String imgUrl;
+  String name;
+  String author;
+  int pages;
+
+  ShelfScreen(this.imgUrl,this.name, this.author, this.pages);
 
   @override
   Widget build(BuildContext context) {
@@ -21,112 +26,31 @@ class ShelfScreen extends StatelessWidget {
             bottom: 15,
             left: 10,
           ),
-          child: ListView(
-            children: [
+          child: 
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).pushNamed(BookDetailScreen.routeName);
                 },
                 child: Row(
                   children: [
-                    BookShelves(constraints),
+                    BookShelvesImage(imgUrl,constraints),
                     const SizedBox(
                       width: 20,
                     ),
                     Column(
-                      children: const [
-                        Text('Milk and Honey'),
-                        Text('by rupi kaur'),
+                      children: [
+                        Text(name),
+                        Text('by $author'),
                         Text('You rated it 3.5'),
                         Text('Published Date:'),
-                        Text('200 pages'),
+                        Text('$pages pages'),
                       ],
                     ),
                   ],
                 ),
               ),
-              const Divider(
-                color: Colors.black26,
-              ),
-              Row(
-                children: [
-                  BookShelves(constraints),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: const [
-                      Text('Milk and Honey'),
-                      Text('by rupi kaur'),
-                      Text('You rated it 3.5'),
-                      Text('Published Date:'),
-                      Text('200 pages'),
-                    ],
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Colors.black26,
-              ),
-              Row(
-                children: [
-                  BookShelves(constraints),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: const [
-                      Text('Milk and Honey'),
-                      Text('by rupi kaur'),
-                      Text('You rated it 3.5'),
-                      Text('Published Date:'),
-                      Text('200 pages'),
-                    ],
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Colors.black26,
-              ),
-              Row(
-                children: [
-                  BookShelves(constraints),
-                  const Divider(
-                    color: Colors.black26,
-                  ),
-                  Column(
-                    children: const [
-                      Text('Milk and Honey'),
-                      Text('by rupi kaur'),
-                      Text('You rated it 3.5'),
-                      Text('Published Date:'),
-                      Text('200 pages'),
-                    ],
-                  ),
-                ],
-              ),
-              const Divider(
-                color: Colors.black26,
-              ),
-              Row(
-                children: [
-                  BookShelves(constraints),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    children: const [
-                      Text('Milk and Honey'),
-                      Text('by rupi kaur'),
-                      Text('You rated it 3.5'),
-                      Text('Published Date:'),
-                      Text('200 pages'),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+             
+         
         ),
       );
     });
