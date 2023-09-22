@@ -32,6 +32,13 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             itemCount: widget.books.length,
             itemBuilder: (context, index) {
               return GestureDetector(
+                onTap: () {
+                   Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                     return BookDetailScreen(widget.books[index].id, index);
+                    },
+                  ));
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(

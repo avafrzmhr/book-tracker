@@ -11,4 +11,10 @@ class BooksRepositoryImp extends BooksRepository {
     var response = await apiHandler.search(search);
     return response;
   }
+
+  @override
+  Future<Response> bookDetail(int id) async {
+    var response = await apiHandler.bookDetail(id);
+    return response;
+  }
 }

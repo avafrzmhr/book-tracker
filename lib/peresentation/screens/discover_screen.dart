@@ -20,29 +20,12 @@ class DiscoverScreen extends StatelessWidget {
     TextEditingController _searchController = TextEditingController();
     context.read<TokenProvider>().init(context);
     return LayoutBuilder(builder: (ctx, constraints) {
-      return BlocProvider(
-        create: (context) => SearchBloc(BooksRepositoryImp(ApiHandler())),
-        child: Column(
+      return Column(
           children: [
-            BlocListener<SearchBloc, SearchState>(
-              listener: (context, state) {
-                if (state is SearchSuccess) {
-                  Navigator.push(context, MaterialPageRoute(
-                    builder: (context) {
-                     return SearchResultScreen(state.books);
-                    },
-                  ));
-                }
-              },
-              child: BlocBuilder<SearchBloc, SearchState>(
-                builder: (context, state) {
-                  return SearchBarWidget(_searchController, () {
-                    BlocProvider.of<SearchBloc>(context)
-                        .add(SubmitSearchEvent(_searchController.text));
-                  });
-                },
-              ),
-            ),
+           SearchBarWidget(_searchController),
+    
+              
+            
             SizedBox(
               height: constraints.maxHeight * 0.05,
             ),
@@ -70,7 +53,7 @@ class DiscoverScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
+        
       );
     });
   }

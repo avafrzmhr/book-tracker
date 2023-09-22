@@ -57,5 +57,18 @@ class ApiHandler {
     return response;
   }
 
-  
+ Future<Response> bookDetail(int id) async {
+    Response response = await dio.get(
+      'http://127.0.0.1:8000/books/$id',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              'iMlr9pzvOb31jJ1qloDvYXsNivSCI00GqLAR4FG78H2HgEjTKi6Rt5iXBW0dMfQS',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
 }

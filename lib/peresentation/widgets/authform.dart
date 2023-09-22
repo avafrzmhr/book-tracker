@@ -48,12 +48,29 @@ class _AuthFormState extends State<AuthForm> {
       ],
       child: Stack(
         children: [
-          Container(),
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.bottomRight,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Container(
+              height: widget.constraints.maxHeight * 0.45,
+              width: widget.constraints.maxWidth * 0.55,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(300),
+                ),
+                color: Color.fromARGB(86, 128, 158, 248),
+              ),
+            ),
+          ),
           Container(
             width: widget.constraints.maxWidth * 0.37,
             height: widget.constraints.maxHeight * 0.2,
             decoration: const BoxDecoration(
-              color: Color.fromARGB(189, 128, 158, 248),
+              color: Color.fromARGB(86, 128, 158, 248),
               borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(140),
               ),
@@ -199,7 +216,7 @@ class _AuthFormState extends State<AuthForm> {
                             Text(
                               _isLogin ? 'Signup' : 'Log in',
                               style: const TextStyle(
-                                color: Color.fromARGB(255, 29, 78, 255),
+                                color: Color.fromARGB(255, 0, 37, 173),
                                 fontSize: 16,
                               ),
                             )

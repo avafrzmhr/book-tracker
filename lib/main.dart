@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget with ChangeNotifier {
         home: AuthScreen(),
         routes: {
           // ShelfScreen.routename: (ctx) => ShelfScreen(),
-          BookDetailScreen.routeName: (ctx) => BookDetailScreen(),
+          
           TabsScreen.routeName: (ctx) => TabsScreen(),
       
         },

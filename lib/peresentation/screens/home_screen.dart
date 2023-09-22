@@ -2,7 +2,9 @@ import 'package:book_tracker/peresentation/widgets/book_shelves_image.dart';
 import 'package:book_tracker/peresentation/widgets/list_details.dart';
 import 'package:book_tracker/peresentation/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../prefs.dart';
 import 'shelf_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,12 +16,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController _searchController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
+     context.read<TokenProvider>().init(context);
     return LayoutBuilder(builder: (ctx, constraints) {
       return Column(
         children: [
-          SearchBarWidget(_searchController, () {}),
+          SearchBarWidget(_searchController),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(15),
