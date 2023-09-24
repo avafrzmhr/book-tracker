@@ -47,9 +47,7 @@ class _LibaryScreenState extends State<LibaryScreen> {
         child: Column(
           children: [
             SearchBarWidget(_searchController),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20,),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(15),
