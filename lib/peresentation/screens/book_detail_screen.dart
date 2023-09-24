@@ -1,22 +1,20 @@
-import 'dart:ui';
-
-import 'package:book_tracker/data/datasource/api_handler.dart';
-import 'package:book_tracker/data/repositories/books_repo.dart';
-import 'package:book_tracker/peresentation/blocs/bookDetailBloc/book_detail_bloc.dart';
-import 'package:book_tracker/peresentation/blocs/bookDetailBloc/book_detail_event.dart';
-import 'package:book_tracker/peresentation/widgets/dropDownButton.dart';
-import 'package:book_tracker/peresentation/widgets/rating_widget.dart';
+import '/data/datasource/api_handler.dart';
+import '/data/repositories/books_repo.dart';
+import '/peresentation/blocs/bookDetailBloc/book_detail_bloc.dart';
+import '/peresentation/blocs/bookDetailBloc/book_detail_event.dart';
+import '/peresentation/widgets/dropDownButton.dart';
+import '/peresentation/widgets/rating_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../blocs/bookDetailBloc/book_detail_state.dart';
 
 class BookDetailScreen extends StatefulWidget {
   static const routeName = '/book_detail_screen';
   int id;
   int index;
+  String name;
 
-  BookDetailScreen(this.id, this.index);
+  BookDetailScreen(this.id, this.index, this.name);
 
   @override
   State<BookDetailScreen> createState() => _BookDetailScreenState();
@@ -26,12 +24,12 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
   @override
   Widget build(BuildContext context) {
     double? _ratingValue;
-    
+
     return LayoutBuilder(builder: (ctx, constraints) {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          // title: const Text('Milk and Honey'),
+          backgroundColor: Theme.of(context).primaryColor,
+          title: Text(widget.name),
         ),
         body: BlocProvider(
           create: (context) => BookDetailBloc(BooksRepositoryImp(ApiHandler()))
@@ -44,7 +42,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                     children: [
                       Container(
                         decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 236, 237, 255),
+                          color: Color.fromARGB(226, 240, 240, 250),
                         ),
                         alignment: Alignment.center,
                         height: constraints.maxHeight * 0.36,
@@ -67,7 +65,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                         child: Column(
                           children: [
                             Text(
-                              '${state.books.name}',
+                              state.books.name,
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -85,7 +83,7 @@ class _BookDetailScreenState extends State<BookDetailScreen> {
                       ),
                       SizedBox(
                         width: constraints.maxWidth * 0.5,
-                        child: DropDownButtonWidget(),
+                        child: DropDownButtonWidget([state.books.id]),
                       ),
                       const SizedBox(
                         height: 20,

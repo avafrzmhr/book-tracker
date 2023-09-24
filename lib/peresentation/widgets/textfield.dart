@@ -22,12 +22,13 @@ class AuthTextField extends StatelessWidget {
         right: constraints.maxWidth * 0.1,
         bottom: constraints.maxHeight * 0.04,
       ),
-      child: Container(
-        width: constraints.maxWidth * 0.7,
+      child: SizedBox(
+        width: constraints.maxWidth * 0.77,
         child: TextFormField(
           controller: controller,
           validator: validator,
           decoration: InputDecoration(
+            // labelStyle: TextStyle(color: Theme.of(context).primaryColor),
             labelText: labelText,
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),

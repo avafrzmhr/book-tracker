@@ -6,15 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/searchBloc/search_event.dart';
 import '../blocs/searchBloc/search_state.dart';
-import '../screens/search_result_screen.dart';
+import '../screens/book_list_screen.dart';
 
 class SearchBarWidget extends StatelessWidget {
   TextEditingController searchController;
- 
 
   SearchBarWidget(
     this.searchController,
-   
   );
 
   @override
@@ -29,7 +27,7 @@ class SearchBarWidget extends StatelessWidget {
               if (state is SearchSuccess) {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return SearchResultScreen(state.books);
+                    return BookListScreen(state.books);
                   },
                 ));
               }
@@ -37,39 +35,25 @@ class SearchBarWidget extends StatelessWidget {
             child: BlocBuilder<SearchBloc, SearchState>(
               builder: (context, state) {
                 return Container(
+                  width: constraints.maxWidth * 0.9,
                   height: 50,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFFe9eaec),
+                      borderRadius: BorderRadius.circular(15)),
                   child: TextField(
+                    cursorColor: const Color(0xFF000000),
                     controller: searchController,
                     decoration: InputDecoration(
-                      prefixIconColor: const Color.fromARGB(255, 209, 207, 203),
-                      suffixIconColor: const Color.fromARGB(255, 209, 207, 203),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          width: 2,
-                          color: Color.fromARGB(255, 209, 207, 203),
+                        prefixIcon: IconButton(
+                          onPressed: () {
+                            BlocProvider.of<SearchBloc>(context)
+                                .add(SubmitSearchEvent(searchController.text));
+                          },
+                          icon: const Icon(Icons.search),
+                          color: const Color(0xFF000000).withOpacity(0.5),
                         ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          width: 2,
-                          color: Color.fromARGB(255, 209, 207, 203),
-                        ),
-                      ),
-                      hintText: 'Search...',
-                      suffixIcon: IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () => searchController.clear(),
-                      ),
-                      prefixIcon: IconButton(
-                        icon: const Icon(Icons.search),
-                        onPressed:  () {
-                          BlocProvider.of<SearchBloc>(context)
-                        .add(SubmitSearchEvent(searchController.text));
-                        }
-                      ),
-                    ),
+                        hintText: "Search",
+                        border: InputBorder.none),
                   ),
                 );
               },

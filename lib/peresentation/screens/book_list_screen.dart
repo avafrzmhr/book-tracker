@@ -1,27 +1,27 @@
-import 'package:book_tracker/peresentation/screens/shelf_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../../data/model/book.dart';
 import '../widgets/book_shelves_image.dart';
 import 'book_detail_screen.dart';
 
-class SearchResultScreen extends StatefulWidget {
+class BookListScreen extends StatefulWidget {
   List<Books> books;
 
-  SearchResultScreen(this.books);
+  BookListScreen(this.books);
 
   @override
-  State<SearchResultScreen> createState() => _SearchResultScreenState();
+  State<BookListScreen> createState() => _BookListScreenState();
 }
 
-class _SearchResultScreenState extends State<SearchResultScreen> {
+class _BookListScreenState extends State<BookListScreen> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Results'),
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: const Text(
+            'books',
+          ),
+          backgroundColor: Theme.of(context).primaryColor,
         ),
         body: Padding(
           padding: const EdgeInsets.only(
@@ -33,9 +33,13 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                   Navigator.push(context, MaterialPageRoute(
+                  Navigator.push(context, MaterialPageRoute(
                     builder: (context) {
-                     return BookDetailScreen(widget.books[index].id, index);
+                      return BookDetailScreen(
+                        widget.books[index].id,
+                        index,
+                        widget.books[index].name,
+                      );
                     },
                   ));
                 },
@@ -43,7 +47,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 233, 236, 255),
+                      color: Color.fromARGB(82, 231, 235, 248),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     alignment: Alignment.centerLeft,
@@ -55,20 +59,20 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                           constraints,
                         ),
                         const SizedBox(
-                          width: 20,
+                          width: 30,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(
-                              height: 10,
+                              height: 20,
                             ),
                             Text(
                               widget.books[index].name,
                               softWrap: false,
                               overflow: TextOverflow.fade,
                               style: const TextStyle(
-                                fontSize: 14,
+                                fontSize: 12,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -79,7 +83,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
                               ),
                             ),
                             const Text(
-                              'You rated it 3.5',
+                              'You rated it 0',
                               style: TextStyle(
                                 fontSize: 12,
                               ),

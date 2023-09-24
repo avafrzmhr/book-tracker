@@ -1,13 +1,12 @@
-import 'package:book_tracker/data/datasource/api_handler.dart';
-import 'package:book_tracker/data/repositories/auth_repo.dart';
-import 'package:book_tracker/main.dart';
-import 'package:book_tracker/peresentation/blocs/loginBloc/login_bloc.dart';
-import 'package:book_tracker/peresentation/blocs/loginBloc/login_event.dart';
-import 'package:book_tracker/peresentation/blocs/loginBloc/login_state.dart';
-import 'package:book_tracker/peresentation/blocs/registerBloc/register_bloc.dart';
-import 'package:book_tracker/peresentation/blocs/registerBloc/register_event.dart';
-import 'package:book_tracker/peresentation/prefs.dart';
-import 'package:book_tracker/peresentation/screens/main_screen.dart';
+import '/data/datasource/api_handler.dart';
+import '/data/repositories/auth_repo.dart';
+import '/peresentation/blocs/loginBloc/login_bloc.dart';
+import '/peresentation/blocs/loginBloc/login_event.dart';
+import '/peresentation/blocs/loginBloc/login_state.dart';
+import '/peresentation/blocs/registerBloc/register_bloc.dart';
+import '/peresentation/blocs/registerBloc/register_event.dart';
+import '/peresentation/prefs.dart';
+import '/peresentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/registerBloc/register_state.dart';
@@ -31,9 +30,6 @@ class _AuthFormState extends State<AuthForm> {
   TextEditingController passwordController2 = TextEditingController();
 
   var _isLogin = true;
-  var _userEmail = '';
-  var _userName = '';
-  var _userPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +52,8 @@ class _AuthFormState extends State<AuthForm> {
               color: Colors.white,
             ),
             child: Container(
-              height: widget.constraints.maxHeight * 0.45,
-              width: widget.constraints.maxWidth * 0.55,
+              height: widget.constraints.maxHeight * 0.37,
+              width: widget.constraints.maxWidth * 0.63,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(300),
@@ -82,9 +78,9 @@ class _AuthFormState extends State<AuthForm> {
                 SizedBox(
                   height: widget.constraints.maxHeight * 0.2,
                 ),
-                const Text(
-                  'Create Account',
-                  style: TextStyle(
+                Text(
+                  _isLogin ? 'Log in' : 'Create Account',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
                   ),
@@ -120,7 +116,7 @@ class _AuthFormState extends State<AuthForm> {
                       ),
                       if (!_isLogin)
                         AuthTextField(
-                          'Password Again',
+                          'Repeat password',
                           passwordController2,
                           widget.constraints,
                           (value) {
@@ -131,8 +127,8 @@ class _AuthFormState extends State<AuthForm> {
                             return null;
                           },
                         ),
-                      SizedBox(
-                        height: widget.constraints.maxHeight * 0.07,
+                      const SizedBox(
+                        height: 20,
                       ),
                       MultiBlocListener(
                         listeners: [
@@ -157,9 +153,10 @@ class _AuthFormState extends State<AuthForm> {
                           builder: (context, state) {
                             return ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                shape: const StadiumBorder(),
                                 elevation: 0,
                                 backgroundColor:
-                                    Color.fromARGB(255, 0, 34, 155),
+                                    const Color.fromARGB(255, 0, 23, 105),
                               ),
                               onPressed: () {
                                 !_isLogin

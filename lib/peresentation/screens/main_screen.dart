@@ -1,6 +1,8 @@
-import 'package:book_tracker/peresentation/screens/discover_screen.dart';
-import 'package:book_tracker/peresentation/screens/home_screen.dart';
+import '/peresentation/screens/discover_screen.dart';
+import '/peresentation/screens/home_screen.dart';
+import '/peresentation/screens/library_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs_screen';
@@ -19,16 +21,16 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {
+        'page': const LibaryScreen(),
+        'title': 'Library',
+      },
+      {
         'page': const HomeScreen(),
         'title': 'Home',
       },
       {
         'page': DiscoverScreen(),
         'title': 'Discover',
-      },
-      {
-        'page': HomeScreen(),
-        'title': 'Profile',
       },
     ];
     super.initState();
@@ -46,28 +48,34 @@ class _TabsScreenState extends State<TabsScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title'] as String),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: _pages[_selectedPageIndex]['page'] as Widget,
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedPageIndex,
-        unselectedItemColor: const Color.fromARGB(255, 157, 157, 157),
-        selectedItemColor: Color.fromARGB(255, 91, 107, 255),
-        onTap: _selectPage,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            label: 'Home',
+      bottomNavigationBar: SalomonBottomBar(
+        margin: const EdgeInsets.only(
+          left: 40,
+          right: 40,
+          bottom: 15,
+        ),
+        items: [
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.library_books),
+            title: const Text('Library'),
+            selectedColor: const Color.fromARGB(255, 0, 16, 135),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Discover',
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.home_filled),
+            title: const Text("Home"),
+            selectedColor: const Color.fromARGB(255, 0, 16, 135),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.search),
+            title: const Text("Search"),
+            selectedColor: const Color.fromARGB(255, 0, 16, 135),
           ),
         ],
+        currentIndex: _selectedPageIndex,
+        onTap: _selectPage,
       ),
     );
   }

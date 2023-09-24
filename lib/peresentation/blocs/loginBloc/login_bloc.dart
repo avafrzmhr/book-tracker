@@ -15,7 +15,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         print(response);
         access = response.data['data']['access'];
         TokenProvider.prefs.setString('access', access);
-        print(access);
+       
         emit(LoginSuccess());
       } else {
         emit(LoginErrorState('error in login'));

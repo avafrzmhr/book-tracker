@@ -14,10 +14,11 @@ class ApiHandler {
         'password2': password2,
       },
       options: Options(
+        
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken':
-              'iMlr9pzvOb31jJ1qloDvYXsNivSCI00GqLAR4FG78H2HgEjTKi6Rt5iXBW0dMfQS',
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
         },
       ),
     );
@@ -32,10 +33,26 @@ class ApiHandler {
         'password': password,
       },
       options: Options(
+        
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken':
-              'iMlr9pzvOb31jJ1qloDvYXsNivSCI00GqLAR4FG78H2HgEjTKi6Rt5iXBW0dMfQS',
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> getAllBooks() async {
+    Response response = await dio.get(
+      'http://127.0.0.1:8000/books/',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
         },
       ),
     );
@@ -49,7 +66,7 @@ class ApiHandler {
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken':
-              'iMlr9pzvOb31jJ1qloDvYXsNivSCI00GqLAR4FG78H2HgEjTKi6Rt5iXBW0dMfQS',
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
           'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
         },
       ),
@@ -57,14 +74,113 @@ class ApiHandler {
     return response;
   }
 
- Future<Response> bookDetail(int id) async {
+  Future<Response> bookDetail(int id) async {
     Response response = await dio.get(
       'http://127.0.0.1:8000/books/$id',
       options: Options(
         headers: {
           'Content-Type': 'application/json',
           'X-CSRFToken':
-              'iMlr9pzvOb31jJ1qloDvYXsNivSCI00GqLAR4FG78H2HgEjTKi6Rt5iXBW0dMfQS',
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> read() async {
+    Response response = await dio.get(
+      'http://127.0.0.1:8000/books/Read',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> currentlyRead() async {
+    Response response = await dio.get(
+      'http://127.0.0.1:8000/books/CurrentlyReading',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> wantToRead() async {
+    Response response = await dio.get(
+      'http://127.0.0.1:8000/books/wantsToRead',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> addRead(List<int> id) async {
+    Response response = await dio.post(
+      'http://127.0.0.1:8000/books/Read/create/',
+      data: {
+        'books': id,
+      },
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> addWantToRead(List<int> id) async {
+    Response response = await dio.post(
+      'http://127.0.0.1:8000/books/wantsToRead/create/',
+      data: {
+        'books': id,
+      },
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
+          'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
+        },
+      ),
+    );
+    return response;
+  }
+
+  Future<Response> addCurrentlyReading(List<int> id) async {
+    Response response = await dio.post(
+      'http://127.0.0.1:8000/books/CurrentlyReading/create/',
+      data: {
+        'books': id,
+      },
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken':
+              ' 1NwqWxJrPplawR1FWFzAdMbhPZBuL84U0kQjCEE4wpPgRMPTpPcEmgpjhmQvWXGM',
           'Authorization': 'Bearer ${TokenProvider.prefs.getString('access')}',
         },
       ),

@@ -1,5 +1,4 @@
-import 'package:book_tracker/peresentation/screens/shelf_screen.dart';
-import 'package:book_tracker/peresentation/widgets/list_details.dart';
+
 import 'package:flutter/material.dart';
 
 class BookShelvesImage extends StatelessWidget {

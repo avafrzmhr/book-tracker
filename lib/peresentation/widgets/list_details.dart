@@ -4,19 +4,22 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class ListDetailsWidget extends StatelessWidget {
   String firstText;
-  String secondText;
 
-  ListDetailsWidget(this.firstText, this.secondText);
+  ListDetailsWidget(this.firstText);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(firstText),
+        Text(
+          firstText,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(
           height: 10,
         ),
-        Text(secondText),
       ],
     );
   }

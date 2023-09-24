@@ -15,12 +15,12 @@ class GenreGrids extends StatelessWidget {
       child: Container(
         height: constraints.maxHeight * 0.5,
         decoration: BoxDecoration(
-          color: Color.fromARGB(255, 131, 199, 255),
+          color: const Color.fromARGB(255, 131, 199, 255),
           borderRadius: BorderRadius.circular(15),
         ),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
